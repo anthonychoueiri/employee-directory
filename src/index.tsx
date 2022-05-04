@@ -6,6 +6,7 @@ import App from "./App";
 import Home from "./components/Home";
 import Departments from "./components/Departments";
 import GroupList from "./components/GroupList";
+import Group from "./components/Group";
 import Employee from "./components/Employee";
 import Search from "./components/Search";
 
@@ -21,6 +22,7 @@ root.render(
           <Route path="/:id" element={<Employee />} />
           <Route path="/departments" element={<Departments />} />
           <Route path="/group/:groupType" element={<GroupList />} />
+          <Route path="/group/:groupType/:group" element={<Group />} />
           <Route path="/search" element={<Search />} />
           {/* <Route path="create" element={<CreateQuote />} />
         <Route path="view" element={<ViewAllQuotes />} />

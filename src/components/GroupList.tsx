@@ -1,12 +1,12 @@
 import { Link, useParams } from "react-router-dom";
 
-type GroupType = "titles" | "locations" | unknown;
+export type GroupType = "titles" | "locations" | unknown;
 
 const GroupList = (): JSX.Element => {
   const params = useParams();
   const groupType: GroupType = params.groupType;
 
-  const titles = ["Designer", "Strategist", "Engineer"];
+  const titles = ["Designers", "Strategists", "Engineers"];
   const locations = [
     "Canada",
     "France",
@@ -36,7 +36,7 @@ const GroupList = (): JSX.Element => {
       <ul className="groups-list">
         {groupList.map((element) => (
           <li key={element} className="list-element">
-            {element}
+            <Link to={`${element}`}>{element}</Link>
           </li>
         ))}
       </ul>

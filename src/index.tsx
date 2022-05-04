@@ -24,9 +24,6 @@ root.render(
           <Route path="/group/:groupType" element={<GroupList />} />
           <Route path="/group/:groupType/:group" element={<Group />} />
           <Route path="/search" element={<Search />} />
-          {/* <Route path="create" element={<CreateQuote />} />
-        <Route path="view" element={<ViewAllQuotes />} />
-        <Route path="view/:quoteId" element={<ViewQuote />} /> */}
         </Routes>
       </App>
     </BrowserRouter>

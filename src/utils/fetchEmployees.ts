@@ -11,9 +11,7 @@ const fetchEmployees = async (
   ) => Array<EmployeeInterface> | null = defaultFilter
 ) => {
   try {
-    const response = await fetch(
-      "https://randomuser.me/api/?results=50&inc=name,location,picture,login"
-    );
+    const response = await fetch(process.env.REACT_APP_API_URL);
     const data = await response.json();
 
     const tempList: Array<EmployeeInterface> = [];

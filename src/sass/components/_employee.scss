@@ -1,0 +1,81 @@
+@import "../utils/variables";
+
+.employee-bold {
+    color: $dark;
+    padding: 10px;
+
+    &--thumbnail {
+        @extend .employee-bold;
+        font-size: 15px;
+    }
+}
+
+.employee-light {
+    color: $dark-contrast;
+    font-weight: lighter;
+    padding: 5px 10px;
+
+    &--thumbnail {
+        @extend .employee-light;
+        font-size: 15px;
+    }
+}
+
+.employee-card {
+    @include card;
+    display: flex;
+    gap: 20px;
+    justify-content: left;
+    // border: 1px solid $light-border;
+    // border-radius: 10px;
+    // box-shadow: 0px 13px 19px rgba(0, 0, 0, 0.07);
+    // padding: 40px 10px;
+    // margin: 0 auto;
+
+    // &:hover {
+    //     box-shadow: 0 8px 20px rgb(255 0 0 / 30%);
+    //     transform: translateY(-7px);
+    //     transition: all 500ms;
+    // }
+
+    .employee-info {
+
+    }
+}
+
+.employee {
+    padding: 40px 15px;
+    text-align: center;
+
+    .employee-picture {
+        border-bottom: 5px solid $third-color;
+        border-radius: 5px;
+        margin-bottom: 50px;
+    }
+
+    .employee-info-list {
+        border: 1px solid $light-border;
+        border-radius: 10px;
+        box-shadow: 0px 13px 19px rgba(0, 0, 0, 0.07);
+        width: max-content;
+        padding: 40px 25px;
+        margin: 0 auto;
+
+        .employee-name {
+            color: $dark;
+            font-size: 24px;
+            padding-bottom: 40px;
+            @include screen-size(md) {
+                font-size: 32px;
+            }
+            @include screen-size(lg) {
+                font-size: 38px;
+            }
+        }
+
+        .info-field {
+            display: flex;
+            width: 100%;
+        }
+    }
+}

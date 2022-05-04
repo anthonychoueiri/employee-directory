@@ -1,0 +1,27 @@
+@import "../utils/mixins";
+@import "../utils/variables";
+
+.search-form {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 15px;
+    margin-bottom: 40px;
+    @include screen-size(md) {
+        flex-direction: row;
+    }
+    @include screen-size(lg) {
+        flex-direction: row;
+        width: unset;
+        margin-bottom: unset;
+    }
+
+    .search-bar {
+        border: none;
+        border-radius: 10px;
+        width: 100%;
+        padding: 20px 40px;
+        margin: 0 auto;
+        text-align: start;
+    }
+}

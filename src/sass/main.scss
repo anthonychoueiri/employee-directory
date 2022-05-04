@@ -1,0 +1,40 @@
+@import "./pages/departments";
+@import "./layouts/app";
+@import "./layouts/header";
+@import "./layouts/employee_list";
+@import "./layouts/groups_list";
+@import "./layouts/errors";
+@import "./components/navbar";
+@import "./components/search_bar";
+@import "./components/employee";
+@import "./components/buttons";
+@import "./components/page_title";
+@import "./utils/mixins";
+@import "./utils/variables";
+
+body {
+    min-width: fit-content;
+    overflow: auto;
+
+    &.mobile-nav-is-open {
+        overflow: hidden;
+        @include screen-size(lg) {
+            overflow: auto;
+        }
+    }
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    align-items: center;
+    font-family: $font-family;
+    font-style: $font-style;
+    font-size: $font-size;
+    letter-spacing: $letter-spacing;
+}
+
+a {
+    text-decoration: none;
+}

@@ -16,3 +16,6 @@ At Postlight, we value code quality and readability along with functional code. 
 - Source data from a third party person API, such as https://randomuser.me or http://uifaces.com.
 - Ability to search for employees.
 - Testing.
+
+# Running the App
+Run `npm start` and open http://localhost:3000.

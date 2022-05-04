@@ -12,31 +12,33 @@ const Search = (): JSX.Element => {
   const [searchParams] = useSearchParams();
   let query: string | null = searchParams.get("query");
 
-  const findMatches = (
-    tempList: Array<EmployeeInterface>
-  ): Array<EmployeeInterface> | null => {
-    if (!query) {
-      return null;
-    }
-
+  if (query) {
     query = query.toLowerCase();
-    const matches: Array<EmployeeInterface> | null = [];
-
-    for (const employee of tempList) {
-      if (
-        employee.name.toLowerCase().includes(query) ||
-        employee.jobTitle.toLowerCase().includes(query) ||
-        employee.location.toLowerCase().includes(query)
-      ) {
-        matches.push(employee);
-      }
-    }
-
-    return matches;
-  };
+  }
 
   useEffect(() => {
-    fetchEmployees(setMatchedEmployees, findMatches);
+    fetchEmployees(
+      setMatchedEmployees,
+      (tempList: Array<EmployeeInterface>): Array<EmployeeInterface> | null => {
+        if (!query) {
+          return null;
+        }
+
+        const matches: Array<EmployeeInterface> | null = [];
+
+        for (const employee of tempList) {
+          if (
+            employee.name.toLowerCase().includes(query) ||
+            employee.jobTitle.toLowerCase().includes(query) ||
+            employee.location.toLowerCase().includes(query)
+          ) {
+            matches.push(employee);
+          }
+        }
+
+        return matches;
+      }
+    );
   }, [query]);
 
   return (

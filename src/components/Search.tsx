@@ -24,9 +24,9 @@ const Search = (): JSX.Element => {
 
     for (const employee of tempList) {
       if (
-        employee.name.includes(query) ||
-        employee.jobTitle.includes(query) ||
-        employee.location.includes(query)
+        employee.name.toLowerCase().includes(query) ||
+        employee.jobTitle.toLowerCase().includes(query) ||
+        employee.location.toLowerCase().includes(query)
       ) {
         matches.push(employee);
       }

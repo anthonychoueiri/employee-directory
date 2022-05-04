@@ -24,7 +24,6 @@
     display: grid;
     gap: 30px;
     margin-top: 50px;
-    // margin: 0 auto;
     grid-template-columns: auto;
     @include screen-size(md) {
         grid-template-columns: auto auto;

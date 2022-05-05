@@ -6,6 +6,7 @@ const defaultFilter = (
 
 const fetchEmployees = async (
   setEmployees: React.Dispatch<React.SetStateAction<EmployeeInterface[]>>,
+  setLoading: React.Dispatch<React.SetStateAction<boolean>>,
   filter: (
     tempList: Array<EmployeeInterface>
   ) => Array<EmployeeInterface> | null = defaultFilter
@@ -30,11 +31,10 @@ const fetchEmployees = async (
     if (filteredList) {
       setEmployees(filteredList);
     }
-    return null;
   } catch (error) {
     console.log(error);
-    return null;
   }
+  setLoading(false);
 };
 
 export default fetchEmployees;

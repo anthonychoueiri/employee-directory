@@ -3,12 +3,14 @@ import { useSearchParams } from "react-router-dom";
 
 import EmployeeList from "./EmployeeList";
 import { EmployeeInterface } from "./Employee";
+import Loading from "./Loading";
 import fetchEmployees from "../utils/fetchEmployees";
 
 const Search = (): JSX.Element => {
   const [matchedEmployees, setMatchedEmployees] = useState<EmployeeInterface[]>(
     []
   );
+  const [loading, setLoading] = useState<boolean>(true);
   const [searchParams] = useSearchParams();
   let query: string | null = searchParams.get("query");
 
@@ -19,6 +21,7 @@ const Search = (): JSX.Element => {
   useEffect(() => {
     fetchEmployees(
       setMatchedEmployees,
+      setLoading,
       (tempList: Array<EmployeeInterface>): Array<EmployeeInterface> | null => {
         if (!query) {
           return null;
@@ -44,7 +47,7 @@ const Search = (): JSX.Element => {
   return (
     <>
       <h1 className="page-title">{`Search results for "${query}"`}</h1>
-      <EmployeeList employees={matchedEmployees} />
+      {loading ? <Loading /> : <EmployeeList employees={matchedEmployees} />}
     </>
   );
 };

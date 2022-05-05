@@ -33,7 +33,9 @@ const MobileNavbar = ({ isOpen, onClick }: MobileNavbarProps): JSX.Element => (
     </div>
     <div className={"mobile-nav " + (isOpen ? "opened" : "closed")}>
       <div className="navbar-header">
-        <img className="navbar-logo" src={Logo} alt="Logo" />
+        <a href="/">
+          <img className="navbar-logo" src={Logo} alt="Logo" />
+        </a>
         <div className="navbar-btn-mobile--close" onClick={onClick}>
           <div className="line--1"></div>
           <div className="line--2"></div>

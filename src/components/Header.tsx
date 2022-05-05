@@ -30,7 +30,9 @@ const Header = (): JSX.Element => {
       {isDesktopOrLaptop ? (
         <>
           <div className="header-left">
-            <img className="logo" src={Logo} alt="Logo" />
+            <a href="/">
+              <img className="logo" src={Logo} alt="Logo" />
+            </a>
             <Navbar />
           </div>
           <SearchBar />
@@ -38,7 +40,9 @@ const Header = (): JSX.Element => {
       ) : (
         <>
           <Navbar />
-          <img className="logo" src={Logo} alt="Logo" />
+          <a href="/">
+            <img className="logo" src={Logo} alt="Logo" />
+          </a>
         </>
       )}
     </header>

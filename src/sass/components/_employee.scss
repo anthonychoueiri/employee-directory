@@ -1,3 +1,4 @@
+@import "../utils/mixins";
 @import "../utils/variables";
 
 .employee-bold {
@@ -7,6 +8,12 @@
     &--thumbnail {
         @extend .employee-bold;
         font-size: 15px;
+        @include screen-size(md) {
+            font-size: 18px;
+        }
+        @include screen-size(lg) {
+            font-size: 20px;
+        }
     }
 }
 
@@ -18,6 +25,12 @@
     &--thumbnail {
         @extend .employee-light;
         font-size: 15px;
+        @include screen-size(md) {
+            font-size: 18px;
+        }
+        @include screen-size(lg) {
+            font-size: 20px;
+        }
     }
 }
 
@@ -29,8 +42,6 @@
 
     .employee-thumbnail {
         border-radius: 50%;
-        border: 6px solid $light-border;
-        filter: grayscale(100%);
     }
 }
 

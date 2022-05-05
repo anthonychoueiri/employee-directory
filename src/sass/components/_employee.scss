@@ -26,6 +26,12 @@
     display: flex;
     gap: 20px;
     justify-content: left;
+
+    .employee-thumbnail {
+        border-radius: 50%;
+        border: 6px solid $light-border;
+        filter: grayscale(100%);
+    }
 }
 
 .employee {

@@ -17,7 +17,11 @@ export const EmployeeThumbnail = ({
 }: EmployeeThumbnailProps): JSX.Element => (
   <Link to={`/${employee.id}`} state={{ employee }}>
     <div className="employee-card">
-      <img src={employee.picture} alt={employee.name} />
+      <img
+        className="employee-thumbnail"
+        src={employee.picture}
+        alt={employee.name}
+      />
       <div className="employee-info">
         <h3 className="employee-bold--thumbnail">{employee.name}</h3>
         <p className="employee-light--thumbnail">{employee.jobTitle}</p>

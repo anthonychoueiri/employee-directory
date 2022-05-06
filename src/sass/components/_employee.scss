@@ -1,13 +1,21 @@
 @import "../utils/mixins";
 @import "../utils/variables";
 
-.employee-bold {
+.employee-name {
     color: $dark;
-    padding: 10px;
+    font-size: 24px;
+    padding-bottom: 40px;
+    @include screen-size(md) {
+        font-size: 32px;
+    }
+    @include screen-size(lg) {
+        font-size: 38px;
+    }
 
     &--thumbnail {
-        @extend .employee-bold;
+        @extend .employee-name;
         font-size: 15px;
+        padding: 10px;
         @include screen-size(md) {
             font-size: 18px;
         }
@@ -17,20 +25,16 @@
     }
 }
 
-.employee-light {
+.employee-title--thumbnail {
     color: $dark-contrast;
     font-weight: lighter;
+    font-size: 15px;
     padding: 5px 10px;
-
-    &--thumbnail {
-        @extend .employee-light;
-        font-size: 15px;
-        @include screen-size(md) {
-            font-size: 18px;
-        }
-        @include screen-size(lg) {
-            font-size: 20px;
-        }
+    @include screen-size(md) {
+        font-size: 18px;
+    }
+    @include screen-size(lg) {
+        font-size: 20px;
     }
 }
 
@@ -63,21 +67,20 @@
         padding: 40px 25px;
         margin: 0 auto;
 
-        .employee-name {
-            color: $dark;
-            font-size: 24px;
-            padding-bottom: 40px;
-            @include screen-size(md) {
-                font-size: 32px;
-            }
-            @include screen-size(lg) {
-                font-size: 38px;
-            }
-        }
+        dl {
+            display: grid;
+            grid-template-columns: auto auto;
 
-        .info-field {
-            display: flex;
-            width: 100%;
+            dt {
+                color: $dark;
+                padding: 10px;
+            }
+
+            dd {
+                color: $dark-contrast;
+                font-weight: lighter;
+                padding: 5px 10px;
+            }
         }
     }
 }

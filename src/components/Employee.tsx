@@ -23,8 +23,8 @@ export const EmployeeThumbnail = ({
         alt={employee.name}
       />
       <div className="employee-info">
-        <h3 className="employee-bold--thumbnail">{employee.name}</h3>
-        <p className="employee-light--thumbnail">{employee.jobTitle}</p>
+        <h3 className="employee-name--thumbnail">{employee.name}</h3>
+        <p className="employee-title--thumbnail">{employee.jobTitle}</p>
       </div>
     </div>
   </Link>
@@ -45,7 +45,7 @@ const Employee = (): JSX.Element => {
           />
           <div className="employee-info-list">
             <h2 className="employee-name">{employee.name}</h2>
-            <div className="info-field">
+            {/* <div className="info-field">
               <h3 className="employee-bold">Job Title:</h3>
               <p className="employee-light">{employee.jobTitle}</p>
             </div>
@@ -56,7 +56,15 @@ const Employee = (): JSX.Element => {
             <div className="info-field">
               <h3 className="employee-bold">Location:</h3>
               <p className="employee-light">{employee.location}</p>
-            </div>
+            </div> */}
+            <dl className="info-field">
+              <dt className="employee-bold">Job Title:</dt>
+              <dd className="employee-light">{employee.jobTitle}</dd>
+              <dt className="employee-bold">Department:</dt>
+              <dd className="employee-light">{employee.jobTitle}</dd>
+              <dt className="employee-bold">Location:</dt>
+              <dd className="employee-light">{employee.location}</dd>
+            </dl>
           </div>
         </>
       ) : (

@@ -1,16 +1,6 @@
 import { EmployeeInterface } from "../components/Employee";
 
-const defaultFilter = (
-  tempList: Array<EmployeeInterface>
-): Array<EmployeeInterface> | null => tempList;
-
-const fetchEmployees = async (
-  setEmployees: React.Dispatch<React.SetStateAction<EmployeeInterface[]>>,
-  setLoading: React.Dispatch<React.SetStateAction<boolean>>,
-  filter: (
-    tempList: Array<EmployeeInterface>
-  ) => Array<EmployeeInterface> | null = defaultFilter
-) => {
+const fetchEmployees = async (): Promise<Array<EmployeeInterface> | null> => {
   try {
     const response = await fetch(
       `${process.env.REACT_APP_API_URL}?results=50&inc=name,location,picture,login`
@@ -28,15 +18,11 @@ const fetchEmployees = async (
       };
       tempList.push(employee);
     }
-
-    const filteredList = filter(tempList);
-    if (filteredList) {
-      setEmployees(filteredList);
-    }
+    return tempList;
   } catch (error) {
     console.log(error);
+    return null;
   }
-  setLoading(false);
 };
 
 export default fetchEmployees;

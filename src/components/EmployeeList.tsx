@@ -1,7 +1,7 @@
 import { EmployeeThumbnail, EmployeeInterface } from "./Employee";
 
 type EmployeeListProps = {
-  employees: Array<EmployeeInterface>;
+  employees: Array<EmployeeInterface> | null;
 };
 
 const EmployeeList = ({ employees }: EmployeeListProps): JSX.Element => (

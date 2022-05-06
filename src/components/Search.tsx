@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState, useEffect } from "react";
 import { useSearchParams } from "react-router-dom";
 
 import EmployeeList from "./EmployeeList";
@@ -7,9 +7,9 @@ import Loading from "./Loading";
 import fetchEmployees from "../utils/fetchEmployees";
 
 const Search = (): JSX.Element => {
-  const [matchedEmployees, setMatchedEmployees] = useState<EmployeeInterface[]>(
-    []
-  );
+  const [matchedEmployees, setMatchedEmployees] = useState<
+    EmployeeInterface[] | null
+  >([]);
   const [loading, setLoading] = useState<boolean>(true);
   const [searchParams] = useSearchParams();
   let query: string | null = searchParams.get("query");
@@ -19,29 +19,30 @@ const Search = (): JSX.Element => {
   }
 
   useEffect(() => {
-    fetchEmployees(
-      setMatchedEmployees,
-      setLoading,
-      (tempList: Array<EmployeeInterface>): Array<EmployeeInterface> | null => {
-        if (!query) {
-          return null;
-        }
+    const fetchData = async () => {
+      setLoading(true);
+      const data = await fetchEmployees();
 
-        const matches: Array<EmployeeInterface> | null = [];
-
-        for (const employee of tempList) {
-          if (
-            employee.name.toLowerCase().includes(query) ||
-            employee.jobTitle.toLowerCase().includes(query) ||
-            employee.location.toLowerCase().includes(query)
-          ) {
-            matches.push(employee);
-          }
-        }
-
-        return matches;
+      if (!query || !data) {
+        setMatchedEmployees(null);
+        return;
       }
-    );
+
+      const matches: Array<EmployeeInterface> | null = [];
+      for (const employee of data) {
+        if (
+          employee.name.toLowerCase().includes(query) ||
+          employee.jobTitle.toLowerCase().includes(query) ||
+          employee.location.toLowerCase().includes(query)
+        ) {
+          matches.push(employee);
+        }
+      }
+
+      setLoading(false);
+      setMatchedEmployees(matches);
+    };
+    fetchData();
   }, [query]);
 
   return (

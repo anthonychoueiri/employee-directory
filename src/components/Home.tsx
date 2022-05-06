@@ -6,11 +6,17 @@ import Loading from "./Loading";
 import fetchEmployees from "../utils/fetchEmployees";
 
 const Home = (): JSX.Element => {
-  const [employees, setEmployees] = useState<EmployeeInterface[]>([]);
+  const [employees, setEmployees] = useState<EmployeeInterface[] | null>([]);
   const [loading, setLoading] = useState<boolean>(true);
 
   useEffect(() => {
-    fetchEmployees(setEmployees, setLoading);
+    const fetchData = async () => {
+      setLoading(true);
+      const data = await fetchEmployees();
+      setLoading(false);
+      setEmployees(data);
+    };
+    fetchData();
   }, []);
 
   return (

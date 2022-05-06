@@ -8,39 +8,39 @@ import Loading from "./Loading";
 import fetchEmployees from "../utils/fetchEmployees";
 
 const Group = (): JSX.Element => {
-  const [employees, setEmployees] = useState<EmployeeInterface[]>([]);
+  const [employees, setEmployees] = useState<EmployeeInterface[] | null>([]);
   const [loading, setLoading] = useState<boolean>(true);
   const params = useParams();
   const groupType: GroupType = params.groupType;
   const group: string | undefined = params.group;
 
   useEffect(() => {
-    setLoading(true);
-    fetchEmployees(
-      setEmployees,
-      setLoading,
-      (tempList: Array<EmployeeInterface>): Array<EmployeeInterface> | null => {
-        if (!groupType || !group) {
-          return null;
-        }
+    const fetchData = async () => {
+      setLoading(false);
+      const data = await fetchEmployees();
 
-        const matches: Array<EmployeeInterface> | null = [];
+      if (!groupType || !group || !data) {
+        setEmployees(null);
+        return;
+      }
 
-        for (const employee of tempList) {
-          if (groupType === "titles") {
-            if (employee.jobTitle === group) {
-              matches.push(employee);
-            }
-          } else if (groupType === "locations") {
-            if (employee.location === group) {
-              matches.push(employee);
-            }
+      const matches: Array<EmployeeInterface> | null = [];
+      for (const employee of data) {
+        if (groupType === "titles") {
+          if (employee.jobTitle === group) {
+            matches.push(employee);
+          }
+        } else if (groupType === "locations") {
+          if (employee.location === group) {
+            matches.push(employee);
           }
         }
-
-        return matches;
       }
-    );
+
+      setLoading(false);
+      setEmployees(matches);
+    };
+    fetchData();
   }, [group, groupType]);
 
   return (

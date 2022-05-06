@@ -12,7 +12,9 @@ const fetchEmployees = async (
   ) => Array<EmployeeInterface> | null = defaultFilter
 ) => {
   try {
-    const response = await fetch(process.env.REACT_APP_API_URL);
+    const response = await fetch(
+      `${process.env.REACT_APP_API_URL}?results=50&inc=name,location,picture,login`
+    );
     const data = await response.json();
 
     const tempList: Array<EmployeeInterface> = [];

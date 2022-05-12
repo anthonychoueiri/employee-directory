@@ -1,4 +1,5 @@
 const express = require("express");
+const cors = require("cors");
 const { postgraphile } = require("postgraphile");
 
 require("dotenv").config();
@@ -11,6 +12,8 @@ const postgraphileOptions = {
   graphiql: true,
   enhanceGraphiql: true,
 };
+
+app.use(cors());
 
 app.use(
   postgraphile(

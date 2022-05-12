@@ -6,12 +6,18 @@ require("dotenv").config();
 const app = express();
 const port = 8080;
 
+const postgraphileOptions = {
+  watchPg: true,
+  graphiql: true,
+  enhanceGraphiql: true,
+};
+
 app.use(
-  postgraphile(process.env.DATABASE_URL, process.env.SCHEMA_NAME, {
-    watchPg: true,
-    graphiql: true,
-    enhanceGraphiql: true,
-  })
+  postgraphile(
+    process.env.DATABASE_URL,
+    process.env.SCHEMA_NAME,
+    postgraphileOptions
+  )
 );
 
 app.get("/", (req, res) => {

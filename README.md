@@ -18,4 +18,14 @@ At Postlight, we value code quality and readability along with functional code. 
 - Testing.
 
 # Running the App
-Run `npm start` and open http://localhost:3000.
+To run the server:
+```sh
+cd server
+npm start
+```
+To run the client:
+```sh
+cd client
+npm start
+```
+Then, open http://localhost:3000.

@@ -1,11 +1,14 @@
 import { Link, useLocation } from "react-router-dom";
 
+import Error from "./Error";
+
 export interface EmployeeInterface {
   id: string;
-  name: string;
+  firstName: string;
+  lastName: string;
   picture: string;
   jobTitle: string;
-  location: string;
+  country: string;
 }
 
 type EmployeeThumbnailProps = {
@@ -20,10 +23,12 @@ export const EmployeeThumbnail = ({
       <img
         className="employee-thumbnail"
         src={employee.picture}
-        alt={employee.name}
+        alt={employee.firstName + " " + employee.lastName}
       />
       <div className="employee-info">
-        <h3 className="employee-name--thumbnail">{employee.name}</h3>
+        <h3 className="employee-name--thumbnail">
+          {employee.firstName + " " + employee.lastName}
+        </h3>
         <p className="employee-title--thumbnail">{employee.jobTitle}</p>
       </div>
     </div>
@@ -41,22 +46,24 @@ const Employee = (): JSX.Element => {
           <img
             className="employee-picture"
             src={employee.picture}
-            alt={employee.name}
+            alt={employee.firstName + " " + employee.lastName}
           />
           <div className="employee-info-list">
-            <h2 className="employee-name">{employee.name}</h2>
+            <h2 className="employee-name">
+              {employee.firstName + " " + employee.lastName}
+            </h2>
             <dl className="info-field">
               <dt className="employee-bold">Job Title:</dt>
               <dd className="employee-light">{employee.jobTitle}</dd>
               <dt className="employee-bold">Department:</dt>
               <dd className="employee-light">{employee.jobTitle}</dd>
               <dt className="employee-bold">Location:</dt>
-              <dd className="employee-light">{employee.location}</dd>
+              <dd className="employee-light">{employee.country}</dd>
             </dl>
           </div>
         </>
       ) : (
-        <h2 className="fetch-error">Could not fetch employees</h2>
+        <Error />
       )}
     </div>
   );

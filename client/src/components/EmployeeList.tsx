@@ -1,7 +1,8 @@
+import Error from "./Error";
 import { EmployeeThumbnail, EmployeeInterface } from "./Employee";
 
 type EmployeeListProps = {
-  employees: Array<EmployeeInterface> | null;
+  employees: EmployeeInterface[] | null;
 };
 
 const EmployeeList = ({ employees }: EmployeeListProps): JSX.Element => (
@@ -11,7 +12,7 @@ const EmployeeList = ({ employees }: EmployeeListProps): JSX.Element => (
         <EmployeeThumbnail key={employee.id} employee={employee} />
       ))
     ) : (
-      <h2 className="fetch-error">Could not find employees</h2>
+      <Error />
     )}
   </div>
 );

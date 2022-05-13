@@ -1,5 +1,7 @@
 import { Link, useParams } from "react-router-dom";
 
+import Error from "./Error";
+
 export type GroupType = "titles" | "locations" | unknown;
 
 const GroupList = (): JSX.Element => {
@@ -27,7 +29,7 @@ const GroupList = (): JSX.Element => {
     pageTitle = "Locations";
     groupList = locations;
   } else {
-    return <h2 className="fetch-error">Could not fetch groups</h2>;
+    return <Error />;
   }
 
   return (

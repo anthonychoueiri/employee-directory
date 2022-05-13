@@ -1,5 +1,5 @@
-import { useState, useEffect } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { useQuery } from "@apollo/client";
 
 import Header from "./components/Header";
 import Home from "./components/Home";
@@ -10,28 +10,19 @@ import Employee from "./components/Employee";
 import Search from "./components/Search";
 import { EmployeeInterface } from "./components/Employee";
 import EmployeesContext from "./utils/employeesContext";
-import fetchEmployees from "./utils/fetchEmployees";
+import { GET_EMPLOYEES } from "./graphql/queries";
 import "./sass/main.scss";
 
 const App = (): JSX.Element => {
-  const [employees, setEmployees] = useState<EmployeeInterface[] | null>([]);
-  const [loading, setLoading] = useState<boolean>(true);
+  const { loading, error, data } = useQuery(GET_EMPLOYEES);
 
-  useEffect(() => {
-    const fetchData = async () => {
-      setLoading(true);
-      const data: EmployeeInterface[] | null = await fetchEmployees();
-      setEmployees(data);
-      setLoading(false);
-    };
-    fetchData();
-  }, []);
+  const employees: EmployeeInterface[] | null = data?.allEmployees?.nodes;
 
   return (
     <BrowserRouter>
       <Header />
       <div className="App">
-        <EmployeesContext.Provider value={{ employees, loading }}>
+        <EmployeesContext.Provider value={{ employees, loading, error }}>
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/:id" element={<Employee />} />

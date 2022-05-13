@@ -1,46 +1,48 @@
-import { useState, useEffect, useContext } from "react";
+import { useContext } from "react";
 import { useParams } from "react-router-dom";
 
 import EmployeeList from "./EmployeeList";
 import Loading from "./Loading";
+import Error from "./Error";
 import { EmployeeInterface } from "./Employee";
 import { GroupType } from "./GroupList";
 import EmployeesContext from "../utils/employeesContext";
 
 const Group = (): JSX.Element => {
-  const { employees, loading } = useContext(EmployeesContext);
-  const [matchedEmployees, setMatchedEmployees] = useState<
-    EmployeeInterface[] | null
-  >([]);
+  const { employees, loading, error } = useContext(EmployeesContext);
   const params = useParams();
+
   const groupType: GroupType = params.groupType;
-  const group: string | undefined = params.group;
+  const groupParam: string | undefined = params.group;
 
-  useEffect(() => {
-    if (!groupType || !group || !employees) {
-      setMatchedEmployees(null);
-      return;
-    }
+  if (!employees || !groupParam) {
+    return <Error />;
+  }
 
-    const matches: Array<EmployeeInterface> | null = [];
-    for (const employee of employees) {
-      if (groupType === "titles") {
-        if (employee.jobTitle === group) {
-          matches.push(employee);
-        }
-      } else if (groupType === "locations") {
-        if (employee.location === group) {
-          matches.push(employee);
-        }
+  const matchedEmployees: EmployeeInterface[] | null = [];
+  for (const employee of employees) {
+    if (groupType === "titles") {
+      const group: string | undefined = groupParam?.slice(0, -1);
+      if (employee.jobTitle === group) {
+        matchedEmployees.push(employee);
+      }
+    } else if (groupType === "locations") {
+      if (employee.country === groupParam) {
+        matchedEmployees.push(employee);
       }
     }
-    setMatchedEmployees(matches);
-  }, [employees, group, groupType]);
+  }
 
   return (
     <>
-      <h1 className="page-title">{group}</h1>
-      {loading ? <Loading /> : <EmployeeList employees={matchedEmployees} />}
+      <h1 className="page-title">{groupParam}</h1>
+      {loading ? (
+        <Loading />
+      ) : error ? (
+        <Error />
+      ) : (
+        <EmployeeList employees={matchedEmployees} />
+      )}
     </>
   );
 };

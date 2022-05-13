@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import DepartmentImage from "../assets/department.png";
 
 const Departments = (): JSX.Element => {
-  const departments = ["Design", "Strategy", "Engineering"];
+  const departments: string[] = ["Design", "Strategy", "Engineering"];
 
   return (
     <>

@@ -1,4 +1,5 @@
 import { useContext } from "react";
+import { Link } from "react-router-dom";
 
 import EmployeeList from "./EmployeeList";
 import Loading from "./Loading";
@@ -10,6 +11,15 @@ const Home = (): JSX.Element => {
   return (
     <>
       <h1 className="page-title">Employees</h1>
+      <Link to="/create">
+        <div className="add-employee">
+          <div className="add-icon">
+            <div className="plus-sign--vertical" />
+            <div className="plus-sign--horizontal" />
+          </div>
+          <h2 className="add-label">Add Employee</h2>
+        </div>
+      </Link>
       {loading ? (
         <Loading />
       ) : error ? (

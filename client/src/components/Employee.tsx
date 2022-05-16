@@ -1,6 +1,8 @@
 import { Link, useLocation } from "react-router-dom";
 
 import Error from "./Error";
+import EditIcon from "../assets/edit.png";
+import DeleteIcon from "../assets/delete.png";
 
 export interface EmployeeInterface {
   id: string;
@@ -39,6 +41,10 @@ const Employee = (): JSX.Element => {
   const location = useLocation();
   const { employee }: any = location.state;
 
+  const handleDelete = () => {
+    alert("Delete");
+  };
+
   return (
     <div className="employee">
       {employee ? (
@@ -49,9 +55,17 @@ const Employee = (): JSX.Element => {
             alt={employee.firstName + " " + employee.lastName}
           />
           <div className="employee-info-list">
-            <h2 className="employee-name">
-              {employee.firstName + " " + employee.lastName}
-            </h2>
+            <div className="employee-header">
+              <h2 className="employee-name">
+                {employee.firstName + " " + employee.lastName}
+              </h2>
+              <div className="employee-actions">
+                <Link to={`/edit/${employee.id}`} state={{ employee }}>
+                  <img src={EditIcon} alt="Edit" />
+                </Link>
+                <img src={DeleteIcon} alt="Delete" onClick={handleDelete} />
+              </div>
+            </div>
             <dl className="info-field">
               <dt className="employee-bold">Job Title:</dt>
               <dd className="employee-light">{employee.jobTitle}</dd>

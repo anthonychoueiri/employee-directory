@@ -17,4 +17,10 @@
         background-color: $dark-btn;
         color: $light;
     }
+
+    &--colored {
+        @extend .btn;
+        background-color: $third-color;
+        color: $light;
+    }
 }

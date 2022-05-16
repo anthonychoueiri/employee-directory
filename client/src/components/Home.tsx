@@ -11,7 +11,7 @@ const Home = (): JSX.Element => {
   return (
     <>
       <h1 className="page-title">Employees</h1>
-      <Link to="/create">
+      <Link to="/add">
         <div className="add-employee">
           <div className="add-icon">
             <div className="plus-sign--vertical" />

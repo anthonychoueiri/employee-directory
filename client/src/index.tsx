@@ -1,25 +1,11 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import { ApolloClient, InMemoryCache, ApolloProvider } from "@apollo/client";
+import { ApolloClient, ApolloProvider } from "@apollo/client";
 
 import App from "./App";
+import { link, cache } from "./utils/apolloClientOptions";
 
-const client = new ApolloClient({
-  uri: process.env.REACT_APP_API_URL,
-  cache: new InMemoryCache({
-    typePolicies: {
-      Query: {
-        fields: {
-          nodes: {
-            merge(existing, incoming) {
-              return { ...existing, ...incoming };
-            },
-          },
-        },
-      },
-    },
-  }),
-});
+const client = new ApolloClient({ link, cache });
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement

@@ -1,6 +1,10 @@
-import { Link, useLocation } from "react-router-dom";
+import { useState, useEffect } from "react";
+import { Link, useParams } from "react-router-dom";
+import { useApolloClient, useMutation } from "@apollo/client";
 
 import Error from "./Error";
+import { READ_EMPLOYEE } from "../graphql/queries";
+import { DELETE_EMPLOYEE } from "../graphql/mutations";
 import EditIcon from "../assets/edit.png";
 import DeleteIcon from "../assets/delete.png";
 
@@ -38,11 +42,35 @@ export const EmployeeThumbnail = ({
 );
 
 const Employee = (): JSX.Element => {
-  const location = useLocation();
-  const { employee }: any = location.state;
+  const [employee, setEmployee] = useState<EmployeeInterface | null>();
+  const client = useApolloClient();
+  const params = useParams();
+  const { id } = params;
+  const [deleteEmployee, { loading, error }] = useMutation(DELETE_EMPLOYEE);
+
+  useEffect(() => {
+    const employeeData = client.readFragment({
+      id: `Employee:${id}`,
+      fragment: READ_EMPLOYEE,
+    });
+    setEmployee(employeeData);
+  }, [client, id]);
 
   const handleDelete = () => {
-    alert("Delete");
+    if (!employee) {
+      return;
+    }
+
+    deleteEmployee({ variables: { id: employee.id } });
+    while (loading) {
+      continue;
+    }
+    if (error) {
+      alert("Could not delete employee.");
+      return;
+    }
+    alert("Employee deleted");
+    window.history.back();
   };
 
   return (

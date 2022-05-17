@@ -8,7 +8,10 @@ import GroupList from "./components/GroupList";
 import Group from "./components/Group";
 import Employee from "./components/Employee";
 import Search from "./components/Search";
-import EmployeeForm from "./components/EmployeeForm";
+import {
+  CreateEmployeeForm,
+  EditEmployeeForm,
+} from "./components/EmployeeForm";
 import { EmployeeInterface } from "./components/Employee";
 import EmployeesContext from "./utils/employeesContext";
 import { GET_EMPLOYEES } from "./graphql/queries";
@@ -31,8 +34,8 @@ const App = (): JSX.Element => {
             <Route path="/group/:groupType" element={<GroupList />} />
             <Route path="/group/:groupType/:group" element={<Group />} />
             <Route path="/search" element={<Search />} />
-            <Route path="/add" element={<EmployeeForm />} />
-            <Route path="/edit/:id" element={<EmployeeForm />} />
+            <Route path="/add" element={<CreateEmployeeForm />} />
+            <Route path="/edit/:id" element={<EditEmployeeForm />} />
           </Routes>
         </EmployeesContext.Provider>
       </div>

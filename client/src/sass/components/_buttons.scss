@@ -18,6 +18,13 @@
         color: $light;
     }
 
+    &--light {
+        @extend .btn;
+        border: 3px solid $dark-contrast;
+        background-color: $light;
+        color: $dark-contrast;
+    }
+
     &--colored {
         @extend .btn;
         background-color: $third-color;

@@ -91,6 +91,11 @@
                 img {
                     height: 25px;
                     cursor: pointer;
+                    transition: all 500ms;
+
+                    &:hover {
+                        transform: translateY(-7px);
+                    }
                 }
             }
         }

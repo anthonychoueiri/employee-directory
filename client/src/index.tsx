@@ -6,7 +6,19 @@ import App from "./App";
 
 const client = new ApolloClient({
   uri: process.env.REACT_APP_API_URL,
-  cache: new InMemoryCache(),
+  cache: new InMemoryCache({
+    typePolicies: {
+      Query: {
+        fields: {
+          nodes: {
+            merge(existing, incoming) {
+              return { ...existing, ...incoming };
+            },
+          },
+        },
+      },
+    },
+  }),
 });
 
 const root = ReactDOM.createRoot(

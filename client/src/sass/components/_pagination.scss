@@ -1,0 +1,65 @@
+@import "../utils/variables";
+
+.pagination {
+    display: flex;
+    width: max-content;
+    margin: 60px auto;
+
+    .arrow {
+        display: inline-block;
+        background: none;
+        height: 20px;
+        width: 20px;
+        padding: 3px;
+        cursor: pointer;
+        transition: all 100ms;
+
+        &--left {
+            @extend .arrow;
+            margin-right: 15px;
+            transform: rotate(135deg);
+
+            &:hover.enabled {
+                transform: rotate(135deg) translateX(1px) translateY((1px));
+            }
+        }
+
+        &--right {
+            @extend .arrow;
+            margin-left: 15px;
+            transform: rotate(-45deg);
+
+            &:hover.enabled {
+                transform: rotate(-45deg) translateX(1px) translateY((1px));
+            }
+        }
+
+        &.disabled {
+            border: solid $dark;
+            border-width: 0 3px 3px 0;
+        }
+
+        &.enabled {
+            border: solid $third-color;
+            border-width: 0 3px 3px 0;
+        }
+    }
+
+    .page-number {
+        background: none;
+        border: none;
+        text-align: center;
+        height: 40px;
+        width: 40px;
+        padding: 10px;
+        cursor: pointer;
+
+        &--current {
+            @extend .page-number;
+            background-color: $third-color;
+            color: $light;
+            border: none;
+            border-radius: 50%;
+        }
+    }
+}

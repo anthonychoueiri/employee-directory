@@ -20,7 +20,7 @@
             transform: rotate(135deg);
 
             &:hover.enabled {
-                transform: rotate(135deg) translateX(1px) translateY((1px));
+                transform: rotate(135deg) translateX(1px) translateY(1px);
             }
         }
 
@@ -30,7 +30,7 @@
             transform: rotate(-45deg);
 
             &:hover.enabled {
-                transform: rotate(-45deg) translateX(1px) translateY((1px));
+                transform: rotate(-45deg) translateX(1px) translateY(1px);
             }
         }
 

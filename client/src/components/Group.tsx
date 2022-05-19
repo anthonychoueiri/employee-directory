@@ -4,7 +4,7 @@ import { useParams } from "react-router-dom";
 import EmployeeList from "./EmployeeList";
 import Loading from "./Loading";
 import Error from "./Error";
-import { EmployeeInterface } from "./Employee";
+import { Employee } from "./Employee";
 import { GroupType } from "./GroupList";
 import EmployeesContext from "../utils/employeesContext";
 
@@ -19,7 +19,7 @@ const Group = (): JSX.Element => {
     return <Error />;
   }
 
-  const matchedEmployees: EmployeeInterface[] | null = [];
+  const matchedEmployees: Employee[] | null = [];
   for (const employee of employees) {
     if (groupType === "titles") {
       const group: string | undefined = groupParam?.slice(0, -1);

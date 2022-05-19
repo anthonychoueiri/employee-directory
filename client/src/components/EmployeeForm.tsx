@@ -2,15 +2,15 @@ import { useState, useEffect } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { useMutation } from "@apollo/client";
 
-import { EmployeeInterface } from "./Employee";
+import { Employee } from "./Employee";
 import { CREATE_EMPLOYEE, EDIT_EMPLOYEE } from "../graphql/mutations";
 
 type LocationState = {
-  employee: EmployeeInterface;
+  employee: Employee;
 };
 
 type EmployeeFormProps = {
-  employee?: EmployeeInterface;
+  employee?: Employee;
   onSubmit: React.FormEventHandler<HTMLFormElement>;
   onChange: React.ChangeEventHandler<HTMLInputElement>;
   onCancel: React.MouseEventHandler<HTMLButtonElement>;
@@ -81,7 +81,7 @@ const EmployeeForm = ({
 );
 
 export const CreateEmployeeForm = (): JSX.Element => {
-  const [employee, setEmployee] = useState<EmployeeInterface | any>({
+  const [employee, setEmployee] = useState<Employee | any>({
     firstName: "",
     lastName: "",
     picture: "",
@@ -155,7 +155,7 @@ export const CreateEmployeeForm = (): JSX.Element => {
 };
 
 export const EditEmployeeForm = (): JSX.Element => {
-  const [employee, setEmployee] = useState<EmployeeInterface | any>({
+  const [employee, setEmployee] = useState<Employee | any>({
     id: "",
     firstName: "",
     lastName: "",

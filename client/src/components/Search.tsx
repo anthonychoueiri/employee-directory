@@ -4,7 +4,7 @@ import { useSearchParams } from "react-router-dom";
 import EmployeeList from "./EmployeeList";
 import Loading from "./Loading";
 import Error from "./Error";
-import { EmployeeInterface } from "./Employee";
+import { Employee } from "./Employee";
 import EmployeesContext from "../utils/employeesContext";
 
 const Search = (): JSX.Element => {
@@ -19,7 +19,7 @@ const Search = (): JSX.Element => {
 
   const searchQuery: string[] = query.toLowerCase().split(" ");
 
-  const matchedEmployees: EmployeeInterface[] | null = [];
+  const matchedEmployees: Employee[] | null = [];
   for (const employee of employees) {
     if (
       searchQuery.includes(employee.firstName.toLowerCase()) ||

@@ -6,13 +6,13 @@ import Home from "./components/Home";
 import Departments from "./components/Departments";
 import GroupList from "./components/GroupList";
 import Group from "./components/Group";
-import Employee from "./components/Employee";
+import EmployeeItem from "./components/Employee";
 import Search from "./components/Search";
 import {
   CreateEmployeeForm,
   EditEmployeeForm,
 } from "./components/EmployeeForm";
-import { EmployeeInterface } from "./components/Employee";
+import { Employee } from "./components/Employee";
 import EmployeesContext from "./utils/employeesContext";
 import { GET_EMPLOYEES } from "./graphql/queries";
 import "./sass/main.scss";
@@ -20,7 +20,7 @@ import "./sass/main.scss";
 const App = (): JSX.Element => {
   const { loading, error, data } = useQuery(GET_EMPLOYEES);
 
-  const employees: EmployeeInterface[] | null = data?.allEmployees?.nodes;
+  const employees: Employee[] | null = data?.allEmployees?.nodes;
 
   return (
     <BrowserRouter>
@@ -29,7 +29,7 @@ const App = (): JSX.Element => {
         <EmployeesContext.Provider value={{ employees, loading, error }}>
           <Routes>
             <Route path="/" element={<Home />} />
-            <Route path="/:id" element={<Employee />} />
+            <Route path="/:id" element={<EmployeeItem />} />
             <Route path="/departments" element={<Departments />} />
             <Route path="/group/:groupType" element={<GroupList />} />
             <Route path="/group/:groupType/:group" element={<Group />} />

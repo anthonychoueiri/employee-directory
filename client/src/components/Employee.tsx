@@ -8,7 +8,7 @@ import { DELETE_EMPLOYEE } from "../graphql/mutations";
 import EditIcon from "../assets/edit.png";
 import DeleteIcon from "../assets/delete.png";
 
-export interface EmployeeInterface {
+export interface Employee {
   id: string;
   firstName: string;
   lastName: string;
@@ -18,7 +18,7 @@ export interface EmployeeInterface {
 }
 
 type EmployeeThumbnailProps = {
-  employee: EmployeeInterface;
+  employee: Employee;
 };
 
 export const EmployeeThumbnail = ({
@@ -41,8 +41,8 @@ export const EmployeeThumbnail = ({
   </Link>
 );
 
-const Employee = (): JSX.Element => {
-  const [employee, setEmployee] = useState<EmployeeInterface | null>();
+const EmployeeItem = (): JSX.Element => {
+  const [employee, setEmployee] = useState<Employee | null>();
   const client = useApolloClient();
   const params = useParams();
   const { id } = params;
@@ -111,4 +111,4 @@ const Employee = (): JSX.Element => {
   );
 };
 
-export default Employee;
+export default EmployeeItem;

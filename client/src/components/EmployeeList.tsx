@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 
 import Error from "./Error";
-import { EmployeeThumbnail, EmployeeInterface } from "./Employee";
+import { EmployeeThumbnail, Employee } from "./Employee";
 import { employeesPerPage } from "../utils/constants";
 
 type PaginationProps = {
@@ -13,7 +13,7 @@ type PaginationProps = {
 };
 
 type EmployeeListProps = {
-  employees: EmployeeInterface[] | null;
+  employees: Employee[] | null;
 };
 
 const Pagination = ({
@@ -78,9 +78,9 @@ const Pagination = ({
 };
 
 const EmployeeList = ({ employees }: EmployeeListProps): JSX.Element => {
-  const [employeesOnPage, setEmployeesOnPage] = useState<
-    EmployeeInterface[] | null
-  >(employees?.slice(0, employeesPerPage) || []);
+  const [employeesOnPage, setEmployeesOnPage] = useState<Employee[] | null>(
+    employees?.slice(0, employeesPerPage) || []
+  );
   const [currentPage, setCurrentPage] = useState<number>(1);
 
   const totalPages = employees
@@ -140,7 +140,7 @@ const EmployeeList = ({ employees }: EmployeeListProps): JSX.Element => {
     <>
       <div className="employee-list">
         {employeesOnPage?.length ? (
-          employeesOnPage.map((employee: EmployeeInterface) => (
+          employeesOnPage.map((employee: Employee) => (
             <EmployeeThumbnail key={employee.id} employee={employee} />
           ))
         ) : (

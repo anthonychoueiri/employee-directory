@@ -1,10 +1,10 @@
 import { createContext } from "react";
 import { ApolloError } from "@apollo/client";
 
-import { EmployeeInterface } from "../components/Employee";
+import { Employee } from "../components/Employee";
 
 export interface EmployeesContextInterface {
-  employees: EmployeeInterface[] | null;
+  employees: Employee[] | null;
   loading: boolean;
   error: ApolloError | undefined;
 }

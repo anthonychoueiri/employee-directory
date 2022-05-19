@@ -1,6 +1,7 @@
 import { InMemoryCache, ApolloLink, HttpLink } from "@apollo/client";
 
-const httpLink = new HttpLink({ uri: process.env.REACT_APP_API_URL });
+const uri: string = `${process.env.REACT_APP_API_URL}`;
+const httpLink = new HttpLink({ uri });
 
 const omitTypename = (key: any, value: any) => {
   return key === "__typename" ? undefined : value;

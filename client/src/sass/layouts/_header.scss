@@ -2,7 +2,7 @@
 @import "../utils/variables";
 
 .header {
-    background-color: rgba($color: $third-color, $alpha: 0.8);
+    background-color: rgba($color: $main-color, $alpha: 0.8);
     display: flex;
     justify-content: space-between;
     padding: 10px;

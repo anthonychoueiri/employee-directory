@@ -27,7 +27,7 @@
 
     &--colored {
         @extend .btn;
-        background-color: $third-color;
+        background-color: $main-color;
         color: $light;
     }
 }

@@ -19,7 +19,7 @@ const Search = (): JSX.Element => {
 
   const searchQuery: string[] = query.toLowerCase().split(" ");
 
-  const matchedEmployees: Employee[] | null = [];
+  const matchedEmployees: Employee[] = [];
   for (const employee of employees) {
     if (
       searchQuery.includes(employee.firstName.toLowerCase()) ||
@@ -29,6 +29,10 @@ const Search = (): JSX.Element => {
     ) {
       matchedEmployees.push(employee);
     }
+  }
+
+  if (!matchedEmployees.length) {
+    return <Error errorMessage="No matching employees." />;
   }
 
   return (

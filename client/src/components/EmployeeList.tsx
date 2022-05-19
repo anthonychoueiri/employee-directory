@@ -13,7 +13,7 @@ type PaginationProps = {
 };
 
 type EmployeeListProps = {
-  employees: Employee[] | null;
+  employees: Employee[];
 };
 
 const Pagination = ({
@@ -78,7 +78,7 @@ const Pagination = ({
 };
 
 const EmployeeList = ({ employees }: EmployeeListProps): JSX.Element => {
-  const [employeesOnPage, setEmployeesOnPage] = useState<Employee[] | null>(
+  const [employeesOnPage, setEmployeesOnPage] = useState<Employee[]>(
     employees?.slice(0, employeesPerPage) || []
   );
   const [currentPage, setCurrentPage] = useState<number>(1);

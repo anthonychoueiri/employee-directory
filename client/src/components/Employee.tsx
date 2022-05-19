@@ -42,7 +42,7 @@ export const EmployeeThumbnail = ({
 );
 
 const EmployeeItem = (): JSX.Element => {
-  const [employee, setEmployee] = useState<Employee | null>();
+  const [employee, setEmployee] = useState<Employee>();
   const client = useApolloClient();
   const params = useParams();
   const { id } = params;
@@ -105,7 +105,7 @@ const EmployeeItem = (): JSX.Element => {
           </div>
         </>
       ) : (
-        <Error />
+        <Error errorMessage="Could not find employee." />
       )}
     </div>
   );

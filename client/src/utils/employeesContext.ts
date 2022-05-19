@@ -4,7 +4,7 @@ import { ApolloError } from "@apollo/client";
 import { Employee } from "../components/Employee";
 
 export interface EmployeesContextInterface {
-  employees: Employee[] | null;
+  employees: Employee[];
   loading: boolean;
   error: ApolloError | undefined;
 }

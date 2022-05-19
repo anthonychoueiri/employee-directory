@@ -19,7 +19,7 @@ const Group = (): JSX.Element => {
     return <Error />;
   }
 
-  const matchedEmployees: Employee[] | null = [];
+  const matchedEmployees: Employee[] = [];
   for (const employee of employees) {
     if (groupType === "titles") {
       const group: string | undefined = groupParam?.slice(0, -1);

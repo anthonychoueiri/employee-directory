@@ -20,7 +20,7 @@ import "./sass/main.scss";
 const App = (): JSX.Element => {
   const { loading, error, data } = useQuery(GET_EMPLOYEES);
 
-  const employees: Employee[] | null = data?.allEmployees?.nodes;
+  const employees: Employee[] = data?.allEmployees?.nodes;
 
   return (
     <BrowserRouter>

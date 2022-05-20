@@ -1,10 +1,9 @@
 import { Link } from "react-router-dom";
 
+import { departments } from "../utils/constants";
 import DepartmentImage from "../assets/department.png";
 
 const Departments = (): JSX.Element => {
-  const departments: string[] = ["Design", "Strategy", "Engineering"];
-
   return (
     <>
       <h1 className="page-title">Departments</h1>

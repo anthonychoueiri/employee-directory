@@ -5,6 +5,7 @@ import { useApolloClient, useMutation } from "@apollo/client";
 import Error from "./Error";
 import { READ_EMPLOYEE } from "../graphql/queries";
 import { DELETE_EMPLOYEE } from "../graphql/mutations";
+import getEmployeeDepartment from "../utils/getEmployeeDepartment";
 import EditIcon from "../assets/edit.png";
 import DeleteIcon from "../assets/delete.png";
 
@@ -98,7 +99,9 @@ const EmployeeItem = (): JSX.Element => {
               <dt className="employee-bold">Job Title:</dt>
               <dd className="employee-light">{employee.jobTitle}</dd>
               <dt className="employee-bold">Department:</dt>
-              <dd className="employee-light">{employee.jobTitle}</dd>
+              <dd className="employee-light">
+                {getEmployeeDepartment(employee)}
+              </dd>
               <dt className="employee-bold">Location:</dt>
               <dd className="employee-light">{employee.country}</dd>
             </dl>

@@ -9,8 +9,8 @@ const Departments = (): JSX.Element => {
       <h1 className="page-title">Departments</h1>
 
       <div className="departments">
-        {departments.map((department) => (
-          <Link key={department} to={`/search`}>
+        {Object.keys(departments).map((department) => (
+          <Link key={department} to={`/group/departments/${department}`}>
             <div className="department">
               <img
                 className="department-img"

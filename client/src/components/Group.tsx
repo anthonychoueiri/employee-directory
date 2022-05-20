@@ -7,6 +7,7 @@ import Error from "./Error";
 import { Employee } from "./Employee";
 import { GroupType } from "./GroupList";
 import EmployeesContext from "../utils/employeesContext";
+import { departments, DepartmentsType } from "../utils/constants";
 
 const Group = (): JSX.Element => {
   const { employees, loading, error } = useContext(EmployeesContext);
@@ -28,6 +29,11 @@ const Group = (): JSX.Element => {
       }
     } else if (groupType === "locations") {
       if (employee.country === groupParam) {
+        matchedEmployees.push(employee);
+      }
+    } else if (groupType === "departments") {
+      const { [groupParam as keyof DepartmentsType]: department } = departments;
+      if (department.includes(employee.jobTitle)) {
         matchedEmployees.push(employee);
       }
     }

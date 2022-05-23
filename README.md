@@ -17,7 +17,12 @@ At Postlight, we value code quality and readability along with functional code. 
 - Ability to search for employees.
 - Testing.
 
-# Running the App
+# Using the App
+The client app is hosted on https://628b9db0f5692a00a6d615e0--eclectic-phoenix-43689c.netlify.app, while the server is hosted on https://app-employee-directory.herokuapp.com.
+
+## Running the App Locally
+The app can also be run locally.
+
 To run the server:
 ```sh
 cd server

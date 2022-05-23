@@ -5,7 +5,7 @@ const { postgraphile } = require("postgraphile");
 require("dotenv").config();
 
 const app = express();
-const port = 8080;
+const port = process.env.PORT || 8080;
 
 const postgraphileOptions = {
   watchPg: true,

@@ -1,0 +1,12 @@
+@import "../utils/mixins";
+
+.App {
+    padding: 15px;
+    margin: 30px auto 0px;
+    @include screen-size(md) {
+        padding: 15px 25px;
+    }
+    @include screen-size(lg) {
+        padding: 15px 40px;
+    }
+}

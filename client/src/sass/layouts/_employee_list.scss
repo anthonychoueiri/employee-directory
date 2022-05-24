@@ -1,0 +1,5 @@
+@import "../utils/mixins";
+
+.employee-list {
+    @include grid-list;
+}

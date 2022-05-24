@@ -1,0 +1,39 @@
+@import "../utils/variables";
+
+.add-employee {
+    display: flex;
+    width: max-content;
+    gap: 10px;
+    margin: 30px 0px;
+
+    .add-icon {
+        background-color: $main-color;
+        height: 30px;
+        width: 30px;
+        border-radius: 50%;
+
+        .plus-sign {
+            background-color: $light;
+            border-radius: 2px;
+
+            &--vertical {
+                @extend .plus-sign;
+                height: 16px;
+                width: 4px;
+                margin: 7px auto;
+            }
+
+            &--horizontal {
+                @extend .plus-sign;
+                height: 4px;
+                width: 16px;
+                margin: -17px auto;
+            }
+        }
+    }
+
+    .add-label {
+        color: $dark-contrast;
+        font-weight: 200;
+    }
+}

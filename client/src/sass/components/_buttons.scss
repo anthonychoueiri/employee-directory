@@ -1,0 +1,33 @@
+@import "../utils/mixins";
+@import "../utils/variables";
+
+.btn {
+    cursor: pointer;
+    font-weight: bold;
+    border: none;
+    border-radius: 10px;
+    width: 100%;
+    padding: 20px;
+    @include screen-size(md) {
+        width: 150px;
+    }
+
+    &--dark {
+        @extend .btn;
+        background-color: $dark-btn;
+        color: $light;
+    }
+
+    &--light {
+        @extend .btn;
+        border: 3px solid $dark-contrast;
+        background-color: $light;
+        color: $dark-contrast;
+    }
+
+    &--colored {
+        @extend .btn;
+        background-color: $main-color;
+        color: $light;
+    }
+}

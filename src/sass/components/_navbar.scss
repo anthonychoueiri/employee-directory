@@ -1,0 +1,125 @@
+@import "../utils/mixins";
+@import "../utils/variables";
+
+.navbar {
+    text-align: center;
+
+    .nav-content {
+        display: block;
+        @include screen-size(lg) {
+            display: none;
+            background-color: $dark;
+            position: absolute;
+            width: 150px;
+            border-radius: 0px 0px 5px 5px;
+            overflow: hidden;
+
+            &:hover {
+                display: block;
+            }
+        }
+
+        * {
+            display: list-item;
+            color: $light;
+            text-decoration: none;
+            list-style-type: none;
+            text-align: center;
+            padding: 10px;
+            transition: all 800ms;
+
+            &:hover {
+                text-shadow: 0px 2px 5px $third-color;
+                background-color: $light-contrast;
+                box-shadow: inset 0px 0px 10px 3px $light;
+            }
+        }
+    }
+
+    .navbar-btn-mobile {
+        display: flex;
+        flex-direction: column;
+        width: 40px;
+        gap: 6px;
+
+        .line {
+            height: 5px;
+            background-color: $light;
+            border-radius: 8px;
+            width: 100%;
+        }
+
+        &--close {
+            @extend .navbar-btn-mobile;
+            flex-direction: row;
+
+            .line {
+                @extend .line;
+                width: 34px;
+
+                &--1 {
+                    @extend .line;
+                    transform: rotate(45deg);
+                }
+
+                &--2 {
+                    @extend .line;
+                    transform: rotate(-45deg);
+                    margin-left: -100%;
+                }
+            }
+        }
+    }
+
+    .mobile-nav {
+        position: fixed;
+        height: 100%;
+        width: 100%;
+        top: 0px;
+        bottom: 0px;
+        left: 0px;
+        right: 0px;
+        background-color: $third-color;
+        transform: translateX(-100%);
+        transition: all 0.3s ease-out;
+
+        &.opened {
+            padding: 20px;
+            transform: translateX(0%);
+        }
+
+        &.closed {
+            transform: translateX(-100%);
+        }
+
+        .navbar-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 30px;
+        }
+
+        .navbar-logo {
+            height: 60px;
+        }
+    }
+
+    .large-nav {
+        $large-nav: &;
+        color: $light;
+        font-weight: bold;
+        display: block;
+        width: 150px;
+        padding: 20px;
+        border-radius: 5px 5px 0px 0px;
+        transition: all 300ms;
+
+        &:hover {
+            border-bottom: 3px solid $light;
+            box-shadow: inset 150px 0 0 0 $light-contrast;
+
+            + .nav-content {
+                display: block;
+            }
+        }
+    }
+}

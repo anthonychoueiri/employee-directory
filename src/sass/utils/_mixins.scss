@@ -1,0 +1,50 @@
+@import "./breakpoints";
+@import "./variables";
+
+@mixin screen-size($device) {
+    @media screen and (min-width: map-get($breakpoints, $device)) {
+        @content;
+    }
+}
+
+@mixin card {
+    border: 1px solid $light-border;
+    border-radius: 10px;
+    box-shadow: 0px 13px 19px rgba(0, 0, 0, 0.07);
+    padding: 40px 10px;
+    margin: 0 auto;
+
+    &:hover {
+        transform: translateY(-7px);
+        transition: all 500ms;
+        animation: 2s infinite linear rotate-shadow;
+    }
+}
+
+@keyframes rotate-shadow {
+    0% {
+        box-shadow: 0px 8px 20px rgba($color: $third-color, $alpha: 0.3);
+    }
+    25% {
+        box-shadow: 8px 0px 20px rgba($color: $third-color, $alpha: 0.3);
+    }
+    75% {
+        box-shadow: -8px 0px 20px rgba($color: $third-color, $alpha: 0.3);
+    }
+    100% {
+        box-shadow: 0px 8px 20px rgba($color: $third-color, $alpha: 0.3);
+    }
+}
+
+@mixin grid-list {
+    display: grid;
+    gap: 30px;
+    margin-top: 50px;
+    grid-template-columns: auto;
+    @include screen-size(md) {
+        grid-template-columns: auto auto;
+    }
+    @include screen-size(lg) {
+        grid-template-columns: auto auto auto;
+    }
+}

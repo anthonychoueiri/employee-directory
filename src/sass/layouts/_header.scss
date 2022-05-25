@@ -1,0 +1,35 @@
+@import "../utils/mixins";
+@import "../utils/variables";
+
+.header {
+    background-color: rgba($color: $third-color, $alpha: 0.8);
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    z-index: 1;
+    @include screen-size(lg) {
+        padding: 20px 40px;
+    }
+
+    &-left {
+        display: flex;
+        gap: 30px;
+    }
+
+    .logo {
+        height: 80px;
+    }
+
+    &.sticky {
+        position: fixed;
+        top: 0;
+        width: 100%;
+
+        + div {
+            padding-top: 100px;
+            @include screen-size(lg) {
+                padding-top: 120px;
+            }
+        }
+    }
+}

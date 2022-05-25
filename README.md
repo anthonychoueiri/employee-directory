@@ -1,46 +1,21 @@
-# Getting Started with Create React App
+# The Task
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Showcase your skills by creating an employee directory web application that’s comprised of a front and back end built using modern tools. Include names, pictures, job titles, and anything else you see fit. Go as deep with the front end and back end as you desire. For example, if you’re primarily a front end developer, you could use an API mocking tool. If you’re primarily a back end developer, you could focus on implementing search or modern API standards like GraphQL or JSON API.
+At Postlight, we value code quality and readability along with functional code. The code submitted should be production quality and something you would use in a real application.
+**We don’t expect you to complete every suggested feature below.**
 
-## Available Scripts
+### Suggested Features
+- Setup instructions and notes on how you built the application.
+- Use of a front end framework, ideally React.
+- Modern API, we commonly use Node in-house.
+- Ability to display employees by department, title, location, etc.
+- Use of a client-side router.
+- Creative use of animation.
+- Paginated lists.
+- Forms for creating, updating, and deleting employees.
+- Source data from a third party person API, such as https://randomuser.me or http://uifaces.com.
+- Ability to search for employees.
+- Testing.
 
-In the project directory, you can run:
-
-### `npm start`
-
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+# Running the App
+Run `npm start` and open http://localhost:3000.
